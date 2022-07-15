@@ -28,9 +28,6 @@ class LogInViewController: UIViewController {
     
     @IBAction func logInButtonPressed() {
         if userNameTextField.text != userName || passwordTextField.text != password {
-            userNameTextField.endEditing(true)
-            passwordTextField.endEditing(true)
-            
             showAlert(title: "Invalid login or password",
                       message: "please enter correct login and password") { _ in
                 self.passwordTextField.text = nil
@@ -52,7 +49,7 @@ class LogInViewController: UIViewController {
             message = "Your password is \(password)"
         }
         
-        showAlert(title: "Ooops!", message: message, buttonHandler: nil)
+        showAlert(title: "Ooops!", message: message)
     }
 }
 
@@ -60,7 +57,7 @@ class LogInViewController: UIViewController {
 extension LogInViewController {
     private func showAlert(title: String,
                            message: String,
-                           buttonHandler: ((UIAlertAction) -> Void)?) {
+                           buttonHandler: ((UIAlertAction) -> Void)? = nil) {
         let alert = UIAlertController(title: title,
                                       message: message,
                                       preferredStyle: .alert)
