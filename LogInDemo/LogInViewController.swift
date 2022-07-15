@@ -12,11 +12,12 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    private let userName = "User"
-    private let password = "Password"
+    private let userName = "Alex"
+    private let password = "PassW"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        userNameTextField.delegate = self
         passwordTextField.delegate = self
     }
     
@@ -36,6 +37,7 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
         if userNameTextField.text != userName || passwordTextField.text != password {
             userNameTextField.endEditing(true)
             passwordTextField.endEditing(true)
+            
             showAlert(title: "Invalid login or password",
                       message: "please enter correct login and password") { _ in
                 self.passwordTextField.text = nil
@@ -83,7 +85,12 @@ extension LogInViewController {
 // MARK: - TextField Delegate Methods
 extension LogInViewController {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        logInButtonPressed()
+        if textField.tag == 0 {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            logInButtonPressed()
+        }
+        
         return true
     }
 }
