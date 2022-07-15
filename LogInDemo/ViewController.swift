@@ -17,3 +17,12 @@ class ViewController: UIViewController {
 
 }
 
+
+
+/*
+ Palette:
+ #1: D9F8C4
+ #2: F9F9C5
+ #3: FAD9A1
+ #4: F37878
+ */
