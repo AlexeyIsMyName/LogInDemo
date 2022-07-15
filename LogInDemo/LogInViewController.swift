@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LogInViewController.swift
 //  LogInDemo
 //
 //  Created by ALEKSEY SUSLOV on 15.07.2022.
@@ -7,17 +7,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class LogInViewController: UIViewController {
 
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
-
 }
-
-
 
 /*
  Palette:

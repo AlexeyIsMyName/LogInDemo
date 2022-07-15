@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Log In View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LogInDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LogInViewController" customModule="LogInDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -67,21 +67,25 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Bom-Md-dBE" secondAttribute="trailing" constant="16" id="q0x-7o-Onl"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="RDz-Vw-7eq" id="rNO-4d-Y3H"/>
+                        <outlet property="userNameTextField" destination="KQT-k6-33j" id="Bdr-99-2WL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="90.401785714285708"/>
         </scene>
-        <!--View Controller-->
+        <!--Welcome View Controller-->
         <scene sceneID="3f2-fC-n8Q">
             <objects>
-                <viewController id="fGS-oh-Sdi" sceneMemberID="viewController">
+                <viewController id="fGS-oh-Sdi" customClass="WelcomeViewController" customModule="LogInDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CLS-n7-ceC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome, User!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDj-AR-EJ3">
-                                <rect key="frame" x="106" y="144" width="202" height="36"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome, ****!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDj-AR-EJ3">
+                                <rect key="frame" x="111.5" y="144" width="191" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" red="0.95294117647058818" green="0.47058823529411764" blue="0.47058823529411764" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -110,6 +114,9 @@
                             <constraint firstItem="PWK-T5-bTr" firstAttribute="top" secondItem="aDj-AR-EJ3" secondAttribute="bottom" constant="60" id="vnB-85-Eku"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="welcomeLabel" destination="aDj-AR-EJ3" id="ydo-G4-Adg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8i-SK-UYY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
