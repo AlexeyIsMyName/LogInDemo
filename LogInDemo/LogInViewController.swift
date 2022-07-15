@@ -7,13 +7,18 @@
 
 import UIKit
 
-class LogInViewController: UIViewController {
+class LogInViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     private let userName = "User"
     private let password = "Password"
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        passwordTextField.delegate = self
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
@@ -28,7 +33,16 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func logInButtonPressed() {
-        performSegue(withIdentifier: "welcomeVC", sender: nil)
+        if userNameTextField.text != userName || passwordTextField.text != password {
+            userNameTextField.endEditing(true)
+            passwordTextField.endEditing(true)
+            showAlert(title: "Invalid login or password",
+                      message: "please enter correct login and password") { _ in
+                self.passwordTextField.text = nil
+            }
+        } else {
+            performSegue(withIdentifier: "welcomeVC", sender: nil)
+        }
     }
     
     @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
@@ -66,10 +80,10 @@ extension LogInViewController {
     }
 }
 
-/*
- Palette:
- #1: D9F8C4
- #2: F9F9C5
- #3: FAD9A1
- #4: F37878
- */
+// MARK: - TextField Delegate Methods
+extension LogInViewController {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        logInButtonPressed()
+        return true
+    }
+}
