@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LogInViewController: UIViewController, UITextFieldDelegate {
+class LogInViewController: UIViewController {
 
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -24,13 +24,6 @@ class LogInViewController: UIViewController, UITextFieldDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
         welcomeVC.userName = userName
-    }
-    
-    // Метод для скрытия клавиатуры тапом по экрану
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        userNameTextField.endEditing(true)
-        passwordTextField.endEditing(true)
     }
     
     @IBAction func logInButtonPressed() {
@@ -83,14 +76,19 @@ extension LogInViewController {
 }
 
 // MARK: - TextField Delegate Methods
-extension LogInViewController {
+extension LogInViewController: UITextFieldDelegate {
+    // Метод для скрытия клавиатуры тапом по экрану
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField.tag == 0 {
             passwordTextField.becomeFirstResponder()
         } else {
             logInButtonPressed()
         }
-        
         return true
     }
 }
